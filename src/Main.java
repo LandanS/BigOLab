@@ -15,5 +15,14 @@ public class Main{
         for ( Integer n : data ) {
             System.out.println( "Item: " + n );
         }
+
+        // verify the list is sorted smallest to largest
+        boolean isSorted = true;
+        for ( int i = 0; i < data.size() - 1; i++ ) {
+            if ( data.get( i ) > data.get( i + 1 ) ) {
+                isSorted = false;
+            }
+        }
+        System.out.println( "Sorted: " + isSorted );
     }
 }
