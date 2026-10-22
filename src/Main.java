@@ -1,28 +1,25 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class Main{
     public static void main(String[] args){
-        ArrayList< Integer > data = new ArrayList<>();
 
-        data.add( 13 );
-        data.add( 3 );
-        data.add( 32 );
+        ArrayList<Float> source_data = new ArrayList<>();
 
-        // sort so the smallest number is first
-        Collections.sort( data );
+        // First need to create a PRNG engine
+        Random prng = new Random();
 
-        for ( Integer n : data ) {
-            System.out.println( "Item: " + n );
+        // generate 1000 elements between -1000 and 1000
+        int N = 1000;
+        for (int i=0; i<N; ++i) {
+            source_data.add( prng.nextFloat(-1000.0F, 1000.0F) );
         }
 
-        // verify the list is sorted smallest to largest
-        boolean isSorted = true;
-        for ( int i = 0; i < data.size() - 1; i++ ) {
-            if ( data.get( i ) > data.get( i + 1 ) ) {
-                isSorted = false;
-            }
+        // verify the correct number of random values were added
+        boolean isCorrect = source_data.size() == N;
+        System.out.println( "Correct count: " + isCorrect );
+
         }
-        System.out.println( "Sorted: " + isSorted );
     }
 }
